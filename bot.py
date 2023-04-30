@@ -1,6 +1,7 @@
 import sqlite3
 import sys
 import os
+import locale 
 
 # Conectar ao banco de dados
 conexao = sqlite3.connect('radar.db')
@@ -20,7 +21,35 @@ def painel(stock):
         print("{:<10} {:<10}".format("Simbolo", "Empresa"))
         print("-" * 20)  # Linha separadora
         for linha in resultados:
-            print("{:<10} {:<10}".format(linha[0], linha[1]))
+            #print("{:<10} {:<10}".format(linha[0], linha[1]))
+            simbolo = linha[0]
+            empresa = linha[1]
+            tipo_acao = linha[2]
+            composicao = linha[3]
+            perc_payout_estatuto = linha[4]
+            dy_med_trien = linha[5]
+            preco_atual = linha[6]
+            qtd_meta = linha[7]
+            qtd_autal = linha[8]
+            vl_investido = linha[9]
+            previsao_receber = linha[10]
+            patri_liq_antes = linha[11]
+            lucro_liq_antes = linha[12]
+            acoes_emitididas = linha[13]
+            pay_jan = linha[14]
+            pay_fev = linha[15]
+            pay_mar = linha[16]
+            pay_abr = linha[17]
+            pay_mai = linha[18]
+            pay_jun = linha[19]
+            pay_jul = linha[20]
+            pay_ago = linha[21]
+            pay_set = linha[22]
+            pay_out = linha[23]
+            pay_nov = linha[24]
+            pay_dez = linha[25]
+            print("qtd meta: ", qtd_meta, "\nqtd atual: ", qtd_autal, "\npreco_atual: ", preco_atual, "\n")
+            print("Preço Teto")
     print("\n\n\n")
 
 # Função para exibir o menu
@@ -39,7 +68,7 @@ while True:
     if escolha == "1":
         print("Você selecionou a Opção 1.")
         stock = input("Digite o ticket....: ")
-        painel(stock)
+        painel(stock.upper())
 
 
 
